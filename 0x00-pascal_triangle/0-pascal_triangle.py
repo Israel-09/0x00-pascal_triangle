@@ -13,7 +13,7 @@ def pascal_triangle(n):
 
     triangle = [[1]]
 
-    for i in range(1, n + 1):
+    for i in range(1, n):
         row = [1]
         for k in range(1, i):
             value = triangle[i - 1][k] + triangle[i - 1][k - 1]
