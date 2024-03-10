@@ -1,1 +1,1 @@
-# Pascal triangle
+# alx-interview repo
