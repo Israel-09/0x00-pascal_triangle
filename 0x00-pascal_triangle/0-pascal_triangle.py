@@ -4,7 +4,9 @@ pascal triangle algorithm
 """
 
 def pascal_triangle(n):
-    #initalize loop till n
+    """
+    pascal triangle generator
+    """
     
     if type(n) is not int or n < 0:
         raise TypeError("n must be an integer not less than 0")
