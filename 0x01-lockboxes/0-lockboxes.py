@@ -16,17 +16,17 @@ def canUnlockAll(boxes):
     """
     if not boxes:
         return False
-    
+
     n = len(boxes)
     visited = set()
     queue = deque([0])
-    
+
     while queue:
         box = queue.popleft()
         visited.add(box)
-        
+
         for key in boxes[box]:
             if key < n and key not in visited:
                 queue.append(key)
-    
+
     return len(visited) == n
