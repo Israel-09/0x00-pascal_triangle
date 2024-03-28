@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 log parsing
 """
@@ -48,4 +48,3 @@ finally:
     for key, value in sorted(status_codes_dict.items()):
         if value != 0:
             print('{}: {}'.format(key, value))
-
