@@ -13,40 +13,19 @@ def makeChange(coins, total):
         total (_type_): _description_
     """
 
-    if total < 0:
-        return -1
-    if total == 0:
+    if total <= 0:
         return 0
 
-    memo = {}
+    min_coins = [float('inf')] * (total + 1)
+    min_coins[0] = 0
 
-    def helper(total):
-        """_summary_
+    for coin in coins:
+        for i in range(coin, total + 1):
+            min_coins[i] = min(min_coins[i], min_coins[i - coin] + 1)
 
-        Args:
-            total (_type_): _description_
+    return min_coins[total] if min_coins[total] != float('inf') else -1
 
-        Returns:
-            _type_: _description_
-        """
-        if total in memo:
-            return memo[total]
-        if total == 0:
-            return 0
-        if total < 0:
-            return float('inf')
 
-        best_count = float('inf')
+print(makeChange([1, 2, 25], 37))
 
-        for coin in coins:
-            remainder = total - coin
-            remainder_change = helper(remainder)
-            if remainder_change != float('inf'):
-                best_count = min(best_count, remainder_change + 1)
-
-        memo[total] = best_count
-        return best_count
-
-    best_count = helper(total)
-    return best_count if best_count != float('inf') else -1
-
+print(makeChange([1256, 54, 48, 16, 102], 1453))
