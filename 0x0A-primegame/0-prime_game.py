@@ -31,11 +31,15 @@ def isWinner(x, nums):
     maria = 0
     ben = 0
 
-    for n in nums:
-        primes = sieve(n)
-        if len(primes) & 2:
-            ben += 1
-        else:
-            maria += 1
-
+    for i in range(x):
+        primes = len(sieve(nums[i]))
+        if primes > 0:
+            if primes & 2 == 0:
+                ben += 1
+            else:
+                maria += 1
+    if maria == ben:
+        return None
     return "Ben" if ben > maria else "Maria"
+
+print("Winner: {}".format(isWinner(0, [1, 1, 0, 0, 1, 8])))
