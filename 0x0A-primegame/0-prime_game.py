@@ -12,13 +12,13 @@ def sieve(n):
     prime = [True for i in range(n + 1)]
     p = 2
 
-    while p * p < n:
+    while p * p <= n:
         if prime[p]:
             for i in range(p * p, n + 1, p):
                 prime[i] = False
         p += 1
 
-    return [p for p in range(2, n + 1) if prime[p]]
+    return [p for p in range(1, n + 1) if prime[p]]
 
 
 def isWinner(x, nums):
@@ -33,13 +33,13 @@ def isWinner(x, nums):
 
     for i in range(x):
         primes = len(sieve(nums[i]))
+        
         if primes > 0:
-            if primes & 2 == 0:
-                ben += 1
-            else:
+            if primes % 2 == 0:
                 maria += 1
+            else:
+                ben += 1
     if maria == ben:
         return None
     return "Ben" if ben > maria else "Maria"
 
-print("Winner: {}".format(isWinner(0, [1, 1, 0, 0, 1, 8])))
